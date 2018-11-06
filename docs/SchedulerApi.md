@@ -30,7 +30,7 @@ namespace Example
         public void main()
         {
             var apiInstance = new SchedulerApi();
-            var authorization = authorization_example;  // string | A valid API key is essential for authorization to handle the request.
+            var authorization = "authorization_example";  // string | A valid API key is essential for authorization to handle the request.
             var schedulerRequest = new SchedulerRequest(); // SchedulerRequest | Request DTO for next schedules.
 
             try
