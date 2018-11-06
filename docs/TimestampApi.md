@@ -63,10 +63,6 @@ Name | Type | Description  | Notes
 
 [**DefaultTimestampResponse**](DefaultTimestampResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -124,9 +120,6 @@ Name | Type | Description  | Notes
 
 [**DefaultUsageResponse**](DefaultUsageResponse.md)
 
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -187,9 +180,6 @@ Name | Type | Description  | Notes
 
 [**DefaultTimestampResponse**](DefaultTimestampResponse.md)
 
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -250,9 +240,6 @@ Name | Type | Description  | Notes
 
 **byte[]**
 
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -313,9 +300,6 @@ Name | Type | Description  | Notes
 
 [**Defaultstring**](Defaultstring.md)
 
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
