@@ -34,7 +34,7 @@ namespace Example
         public void main()
         {
             var apiInstance = new TimestampApi();
-            var authorization = authorization_example;  // string | A valid API key is essential for authorization to handle the request.
+            var authorization = "authorization_example";  // string | A valid API key is essential for authorization to handle the request.
             var timestampRequest = new TimestampRequest(); // TimestampRequest | DTO for the hash submission. Add all relevant information concerning your hash submission.
 
             try
@@ -62,10 +62,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DefaultTimestampResponse**](DefaultTimestampResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -97,7 +93,7 @@ namespace Example
         public void main()
         {
             var apiInstance = new TimestampApi();
-            var authorization = authorization_example;  // string | A valid API key is essential for authorization to handle the request.
+            var authorization = "authorization_example";  // string | A valid API key is essential for authorization to handle the request.
 
             try
             {
@@ -124,9 +120,6 @@ Name | Type | Description  | Notes
 
 [**DefaultUsageResponse**](DefaultUsageResponse.md)
 
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -158,7 +151,7 @@ namespace Example
         public void main()
         {
             var apiInstance = new TimestampApi();
-            var authorization = authorization_example;  // string | A valid API key is essential for authorization to handle the request.
+            var authorization = "authorization_example";  // string | A valid API key is essential for authorization to handle the request.
             var hashString = hashString_example;  // string | The hash in string representation.
 
             try
@@ -187,9 +180,6 @@ Name | Type | Description  | Notes
 
 [**DefaultTimestampResponse**](DefaultTimestampResponse.md)
 
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -221,7 +211,7 @@ namespace Example
         public void main()
         {
             var apiInstance = new TimestampApi();
-            var authorization = authorization_example;  // string | A valid API key is essential for authorization to handle the request.
+            var authorization = "authorization_example";  // string | A valid API key is essential for authorization to handle the request.
             var proofRequest = new ProofRequest(); // ProofRequest | Information needed to return the hash status information.
 
             try
@@ -250,9 +240,6 @@ Name | Type | Description  | Notes
 
 **byte[]**
 
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -284,7 +271,7 @@ namespace Example
         public void main()
         {
             var apiInstance = new TimestampApi();
-            var authorization = authorization_example;  // string | A valid API key is essential for authorization to handle the request.
+            var authorization = "authorization_example";  // string | A valid API key is essential for authorization to handle the request.
             var webhookRequest = new WebhookRequest(); // WebhookRequest | DTO for webhook request.
 
             try
@@ -313,9 +300,6 @@ Name | Type | Description  | Notes
 
 [**Defaultstring**](Defaultstring.md)
 
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
