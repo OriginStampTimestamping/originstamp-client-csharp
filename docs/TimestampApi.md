@@ -34,7 +34,7 @@ namespace Example
         public void main()
         {
             var apiInstance = new TimestampApi();
-            var authorization = authorization_example;  // string | A valid API key is essential for authorization to handle the request.
+            var authorization = "authorization_example";  // string | A valid API key is essential for authorization to handle the request.
             var timestampRequest = new TimestampRequest(); // TimestampRequest | DTO for the hash submission. Add all relevant information concerning your hash submission.
 
             try
@@ -93,7 +93,7 @@ namespace Example
         public void main()
         {
             var apiInstance = new TimestampApi();
-            var authorization = authorization_example;  // string | A valid API key is essential for authorization to handle the request.
+            var authorization = "authorization_example";  // string | A valid API key is essential for authorization to handle the request.
 
             try
             {
@@ -151,7 +151,7 @@ namespace Example
         public void main()
         {
             var apiInstance = new TimestampApi();
-            var authorization = authorization_example;  // string | A valid API key is essential for authorization to handle the request.
+            var authorization = "authorization_example";  // string | A valid API key is essential for authorization to handle the request.
             var hashString = hashString_example;  // string | The hash in string representation.
 
             try
@@ -211,7 +211,7 @@ namespace Example
         public void main()
         {
             var apiInstance = new TimestampApi();
-            var authorization = authorization_example;  // string | A valid API key is essential for authorization to handle the request.
+            var authorization = "authorization_example";  // string | A valid API key is essential for authorization to handle the request.
             var proofRequest = new ProofRequest(); // ProofRequest | Information needed to return the hash status information.
 
             try
@@ -271,7 +271,7 @@ namespace Example
         public void main()
         {
             var apiInstance = new TimestampApi();
-            var authorization = authorization_example;  // string | A valid API key is essential for authorization to handle the request.
+            var authorization = "authorization_example";  // string | A valid API key is essential for authorization to handle the request.
             var webhookRequest = new WebhookRequest(); // WebhookRequest | DTO for webhook request.
 
             try
