@@ -52,7 +52,7 @@ namespace Example
         public void main()
         {
             var apiInstance = new TimestampApi();
-            var authorization = authorization_example;  // string | A valid API key is essential for authorization to handle the request.
+            var authorization = "authorization_example";  // string | A valid API key is essential for authorization to handle the request.
             var timestampRequest = new TimestampRequest(); // TimestampRequest | DTO for the hash submission. Add all relevant information concerning your hash submission.
 
             try
