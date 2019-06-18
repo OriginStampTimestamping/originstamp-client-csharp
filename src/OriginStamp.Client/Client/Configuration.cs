@@ -28,7 +28,7 @@ namespace OriginStamp.Client.Client
         /// Version of the package.
         /// </summary>
         /// <value>Version of the package.</value>
-        public const string Version = "1.0.2";
+        public const string Version = "1.0.3";
 
         /// <summary>
         /// Identifier for ISO 8601 DateTime Format

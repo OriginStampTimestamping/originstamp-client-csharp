@@ -6,7 +6,7 @@
         <title>OriginStamp C# Client</title>
 
         <!-- The package version number that is used when resolving dependencies -->
-        <version>1.0.2</version>
+        <version>1.0.3</version>
 
         <!-- Authors contain text that appears directly on the gallery -->
         <authors>OriginStamp</authors>
