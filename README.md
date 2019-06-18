@@ -39,7 +39,7 @@ using OriginStamp.Client.Model;
 
 ## Getting Started
 
-The package is available via [NuGet] (https://docs.nuget.org/consume/installing-nuget) [here](https://www.nuget.org/packages/OriginStamp.ApiClient/).
+The package is available via [NuGet](https://docs.nuget.org/consume/installing-nuget) [here](https://www.nuget.org/packages/OriginStamp.ApiClient/).
 
 ```csharp
 using System;
