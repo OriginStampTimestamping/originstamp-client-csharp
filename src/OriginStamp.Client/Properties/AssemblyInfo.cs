@@ -4,12 +4,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Swagger Library")]
-[assembly: AssemblyDescription("A library generated from a Swagger doc")]
+[assembly: AssemblyTitle("OriginStamp Client")]
+[assembly: AssemblyDescription("C# client for the OriginStamp service")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Swagger")]
-[assembly: AssemblyProduct("SwaggerLibrary")]
-[assembly: AssemblyCopyright("No Copyright")]
+[assembly: AssemblyCompany("OriginStamp")]
+[assembly: AssemblyProduct("OriginStampClient")]
+[assembly: AssemblyCopyright("OriginStamp 2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
