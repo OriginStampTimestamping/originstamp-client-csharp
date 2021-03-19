@@ -1,6 +1,6 @@
-/* 
+/*
  * OriginStamp Client
- * 
+ *
  * OpenAPI spec version: 3.0
  * OriginStamp Documentation: https://docs.originstamp.com
  * Contact: mail@originstamp.com
@@ -27,28 +27,19 @@ namespace OriginStamp.Client.Model
     /// The default service response object uses error code and message to indicate errors. These errors are handled by the client.
     /// </summary>
     [DataContract]
-    public partial class DefaultTimestampResponse :  IEquatable<DefaultTimestampResponse>, IValidatableObject
+    public partial class DefaultOfVoid :  IEquatable<DefaultOfVoid>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="DefaultTimestampResponse" /> class.
+        /// Initializes a new instance of the <see cref="DefaultOfVoid" /> class.
         /// </summary>
-        /// <param name="Data">Generic response object which contains the response data, e.g. timestamp information..</param>
-        /// <param name="ErrorCode">Contains the error of the request. If the error code is 0, everything is fine..</param>
-        /// <param name="ErrorMessage">Contains the error message, that possibly occurred. If it is empty, everything is fine..</param>
-        public DefaultTimestampResponse(TimestampResponse Data = default(TimestampResponse), int? ErrorCode = default(int?), string ErrorMessage = default(string))
+        /// <param name="errorCode">Contains the error of the request. If the error code is 0, everything is fine..</param>
+        /// <param name="errorMessage">Contains the error message, that possibly occurred. If it is empty, everything is fine..</param>
+        public DefaultOfVoid(int? errorCode = default(int?), string errorMessage = default(string))
         {
-            this.Data = Data;
-            this.ErrorCode = ErrorCode;
-            this.ErrorMessage = ErrorMessage;
+            this.ErrorCode = errorCode;
+            this.ErrorMessage = errorMessage;
         }
         
-        /// <summary>
-        /// Generic response object which contains the response data, e.g. timestamp information.
-        /// </summary>
-        /// <value>Generic response object which contains the response data, e.g. timestamp information.</value>
-        [DataMember(Name="data", EmitDefaultValue=false)]
-        public TimestampResponse Data { get; set; }
-
         /// <summary>
         /// Contains the error of the request. If the error code is 0, everything is fine.
         /// </summary>
@@ -70,8 +61,7 @@ namespace OriginStamp.Client.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class DefaultTimestampResponse {\n");
-            sb.Append("  Data: ").Append(Data).Append("\n");
+            sb.Append("class DefaultOfVoid {\n");
             sb.Append("  ErrorCode: ").Append(ErrorCode).Append("\n");
             sb.Append("  ErrorMessage: ").Append(ErrorMessage).Append("\n");
             sb.Append("}\n");
@@ -82,7 +72,7 @@ namespace OriginStamp.Client.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -94,25 +84,20 @@ namespace OriginStamp.Client.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as DefaultTimestampResponse);
+            return this.Equals(input as DefaultOfVoid);
         }
 
         /// <summary>
-        /// Returns true if DefaultTimestampResponse instances are equal
+        /// Returns true if DefaultOfVoid instances are equal
         /// </summary>
-        /// <param name="input">Instance of DefaultTimestampResponse to be compared</param>
+        /// <param name="input">Instance of DefaultOfVoid to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(DefaultTimestampResponse input)
+        public bool Equals(DefaultOfVoid input)
         {
             if (input == null)
                 return false;
 
             return 
-                (
-                    this.Data == input.Data ||
-                    (this.Data != null &&
-                    this.Data.Equals(input.Data))
-                ) && 
                 (
                     this.ErrorCode == input.ErrorCode ||
                     (this.ErrorCode != null &&
@@ -134,8 +119,6 @@ namespace OriginStamp.Client.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Data != null)
-                    hashCode = hashCode * 59 + this.Data.GetHashCode();
                 if (this.ErrorCode != null)
                     hashCode = hashCode * 59 + this.ErrorCode.GetHashCode();
                 if (this.ErrorMessage != null)

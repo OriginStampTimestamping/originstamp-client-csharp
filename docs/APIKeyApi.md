@@ -1,19 +1,19 @@
-# OriginStamp.Client.Api.SchedulerApi
+# OriginStamp.Client.Api.APIKeyApi
 
 All URIs are relative to *https://api.originstamp.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetActiveCurrencies**](SchedulerApi.md#getactivecurrencies) | **GET** /v3/currencies/get | Get active currencies
+[**GetApiKeyUsage**](APIKeyApi.md#getapikeyusage) | **GET** /v3/api_key/usage | Usage
 
 
-<a name="getactivecurrencies"></a>
-# **GetActiveCurrencies**
-> DefaultOfListOfCurrencyModel GetActiveCurrencies (string authorization)
+<a name="getapikeyusage"></a>
+# **GetApiKeyUsage**
+> DefaultUsageResponse GetApiKeyUsage (string authorization)
 
-Get active currencies
+Usage
 
-Returns an array with all active currencies.
+With this interface you can receive the current usage of your API key. The usage statistic refers to the associated account.
 
 ### Example
 ```csharp
@@ -25,22 +25,22 @@ using OriginStamp.Client.Model;
 
 namespace Example
 {
-    public class GetActiveCurrenciesExample
+    public class GetApiKeyUsageExample
     {
         public void main()
         {
-            var apiInstance = new SchedulerApi();
+            var apiInstance = new APIKeyApi();
             var authorization = authorization_example;  // string | A valid API key is essential for authorization to handle the request.
 
             try
             {
-                // Get active currencies
-                DefaultOfListOfCurrencyModel result = apiInstance.GetActiveCurrencies(authorization);
+                // Usage
+                DefaultUsageResponse result = apiInstance.GetApiKeyUsage(authorization);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling SchedulerApi.GetActiveCurrencies: " + e.Message );
+                Debug.Print("Exception when calling APIKeyApi.GetApiKeyUsage: " + e.Message );
             }
         }
     }
@@ -55,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DefaultOfListOfCurrencyModel**](DefaultOfListOfCurrencyModel.md)
+[**DefaultUsageResponse**](DefaultUsageResponse.md)
 
 ### Authorization
 
@@ -63,8 +63,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

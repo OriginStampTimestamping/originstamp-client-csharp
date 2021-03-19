@@ -24,44 +24,56 @@ using SwaggerDateConverter = OriginStamp.Client.Client.SwaggerDateConverter;
 namespace OriginStamp.Client.Model
 {
     /// <summary>
-    /// Request object for a webhook request.
+    /// Request object for a manual webhook request.
     /// </summary>
     [DataContract]
-    public partial class WebhookRequest :  IEquatable<WebhookRequest>, IValidatableObject
+    public partial class ManualWebhookRequest :  IEquatable<ManualWebhookRequest>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="WebhookRequest" /> class.
+        /// Initializes a new instance of the <see cref="ManualWebhookRequest" /> class.
         /// </summary>
-        /// <param name="currency">Currency ID for which the webhook should be executed. Possible values: 0: Bitcoin 1: Ethereum 2: AION 100: Südkurier.</param>
-        /// <param name="hash">Hash (SHA-256 in HEX) for which a notification is requested..</param>
-        /// <param name="target">Target address to which a POST request should be executed..</param>
-        public WebhookRequest(int? currency = default(int?), string hash = default(string), string target = default(string))
+        [JsonConstructorAttribute]
+        protected ManualWebhookRequest() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ManualWebhookRequest" /> class.
+        /// </summary>
+        /// <param name="hash">SHA-256 Hash in Hex representation. (required).</param>
+        /// <param name="webhookUrl">The target URL to which we send the timestamp information of the requested hash via a post request. (required).</param>
+        public ManualWebhookRequest(string hash = default(string), string webhookUrl = default(string))
         {
-            this.Currency = currency;
-            this.Hash = hash;
-            this.Target = target;
+            // to ensure "hash" is required (not null)
+            if (hash == null)
+            {
+                throw new InvalidDataException("hash is a required property for ManualWebhookRequest and cannot be null");
+            }
+            else
+            {
+                this.Hash = hash;
+            }
+            // to ensure "webhookUrl" is required (not null)
+            if (webhookUrl == null)
+            {
+                throw new InvalidDataException("webhookUrl is a required property for ManualWebhookRequest and cannot be null");
+            }
+            else
+            {
+                this.WebhookUrl = webhookUrl;
+            }
         }
         
         /// <summary>
-        /// Currency ID for which the webhook should be executed. Possible values: 0: Bitcoin 1: Ethereum 2: AION 100: Südkurier
+        /// SHA-256 Hash in Hex representation.
         /// </summary>
-        /// <value>Currency ID for which the webhook should be executed. Possible values: 0: Bitcoin 1: Ethereum 2: AION 100: Südkurier</value>
-        [DataMember(Name="currency", EmitDefaultValue=false)]
-        public int? Currency { get; set; }
-
-        /// <summary>
-        /// Hash (SHA-256 in HEX) for which a notification is requested.
-        /// </summary>
-        /// <value>Hash (SHA-256 in HEX) for which a notification is requested.</value>
+        /// <value>SHA-256 Hash in Hex representation.</value>
         [DataMember(Name="hash", EmitDefaultValue=false)]
         public string Hash { get; set; }
 
         /// <summary>
-        /// Target address to which a POST request should be executed.
+        /// The target URL to which we send the timestamp information of the requested hash via a post request.
         /// </summary>
-        /// <value>Target address to which a POST request should be executed.</value>
-        [DataMember(Name="target", EmitDefaultValue=false)]
-        public string Target { get; set; }
+        /// <value>The target URL to which we send the timestamp information of the requested hash via a post request.</value>
+        [DataMember(Name="webhook_url", EmitDefaultValue=false)]
+        public string WebhookUrl { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -70,10 +82,9 @@ namespace OriginStamp.Client.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class WebhookRequest {\n");
-            sb.Append("  Currency: ").Append(Currency).Append("\n");
+            sb.Append("class ManualWebhookRequest {\n");
             sb.Append("  Hash: ").Append(Hash).Append("\n");
-            sb.Append("  Target: ").Append(Target).Append("\n");
+            sb.Append("  WebhookUrl: ").Append(WebhookUrl).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -94,34 +105,29 @@ namespace OriginStamp.Client.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as WebhookRequest);
+            return this.Equals(input as ManualWebhookRequest);
         }
 
         /// <summary>
-        /// Returns true if WebhookRequest instances are equal
+        /// Returns true if ManualWebhookRequest instances are equal
         /// </summary>
-        /// <param name="input">Instance of WebhookRequest to be compared</param>
+        /// <param name="input">Instance of ManualWebhookRequest to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(WebhookRequest input)
+        public bool Equals(ManualWebhookRequest input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Currency == input.Currency ||
-                    (this.Currency != null &&
-                    this.Currency.Equals(input.Currency))
-                ) && 
-                (
                     this.Hash == input.Hash ||
                     (this.Hash != null &&
                     this.Hash.Equals(input.Hash))
                 ) && 
                 (
-                    this.Target == input.Target ||
-                    (this.Target != null &&
-                    this.Target.Equals(input.Target))
+                    this.WebhookUrl == input.WebhookUrl ||
+                    (this.WebhookUrl != null &&
+                    this.WebhookUrl.Equals(input.WebhookUrl))
                 );
         }
 
@@ -134,12 +140,10 @@ namespace OriginStamp.Client.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Currency != null)
-                    hashCode = hashCode * 59 + this.Currency.GetHashCode();
                 if (this.Hash != null)
                     hashCode = hashCode * 59 + this.Hash.GetHashCode();
-                if (this.Target != null)
-                    hashCode = hashCode * 59 + this.Target.GetHashCode();
+                if (this.WebhookUrl != null)
+                    hashCode = hashCode * 59 + this.WebhookUrl.GetHashCode();
                 return hashCode;
             }
         }

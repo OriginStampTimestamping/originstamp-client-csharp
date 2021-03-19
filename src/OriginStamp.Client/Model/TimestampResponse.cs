@@ -1,6 +1,6 @@
-/* 
+/*
  * OriginStamp Client
- * 
+ *
  * OpenAPI spec version: 3.0
  * OriginStamp Documentation: https://docs.originstamp.com
  * Contact: mail@originstamp.com
@@ -32,18 +32,18 @@ namespace OriginStamp.Client.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TimestampResponse" /> class.
         /// </summary>
-        /// <param name="Comment">The comment which was added in the submission of the hash..</param>
-        /// <param name="Created">Field is set to true if it is a novel hash. If the flag is false, the hash was already submitted before..</param>
-        /// <param name="DateCreated">The time when your hash was submitted to OriginStamp. The date is returned in the following format: [ms] since 1.1.1970 (unix epoch), timezone: UTC. This is not considered as a true timestamp..</param>
-        /// <param name="HashString">The submitted hash in hex representation..</param>
-        /// <param name="Timestamps">Contains all the timestamp data of your hash until now..</param>
-        public TimestampResponse(string Comment = default(string), bool? Created = default(bool?), long? DateCreated = default(long?), string HashString = default(string), List<TimestampData> Timestamps = default(List<TimestampData>))
+        /// <param name="comment">The comment which was added in the submission of the hash..</param>
+        /// <param name="created">Field is set to true if it is a novel hash.If the flag is false, the hash was already submitted before..</param>
+        /// <param name="dateCreated">The time when your hash was submitted to OriginStamp. The date is returned in the following format: [ms] since 1.1.1970 (unix epoch), timezone: UTC. This is not considered as a true timestamp..</param>
+        /// <param name="hashString">The submitted hash in hex representation..</param>
+        /// <param name="timestamps">Contains all the timestamp data of your hash until now..</param>
+        public TimestampResponse(string comment = default(string), bool? created = default(bool?), long? dateCreated = default(long?), string hashString = default(string), List<TimestampData> timestamps = default(List<TimestampData>))
         {
-            this.Comment = Comment;
-            this.Created = Created;
-            this.DateCreated = DateCreated;
-            this.HashString = HashString;
-            this.Timestamps = Timestamps;
+            this.Comment = comment;
+            this.Created = created;
+            this.DateCreated = dateCreated;
+            this.HashString = hashString;
+            this.Timestamps = timestamps;
         }
         
         /// <summary>
@@ -54,9 +54,9 @@ namespace OriginStamp.Client.Model
         public string Comment { get; set; }
 
         /// <summary>
-        /// Field is set to true if it is a novel hash. If the flag is false, the hash was already submitted before.
+        /// Field is set to true if it is a novel hash.If the flag is false, the hash was already submitted before.
         /// </summary>
-        /// <value>Field is set to true if it is a novel hash. If the flag is false, the hash was already submitted before.</value>
+        /// <value>Field is set to true if it is a novel hash.If the flag is false, the hash was already submitted before.</value>
         [DataMember(Name="created", EmitDefaultValue=false)]
         public bool? Created { get; set; }
 
@@ -102,7 +102,7 @@ namespace OriginStamp.Client.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

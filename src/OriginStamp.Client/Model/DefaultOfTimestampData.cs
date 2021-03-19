@@ -27,15 +27,15 @@ namespace OriginStamp.Client.Model
     /// The default service response object uses error code and message to indicate errors. These errors are handled by the client.
     /// </summary>
     [DataContract]
-    public partial class DefaultUsageResponse :  IEquatable<DefaultUsageResponse>, IValidatableObject
+    public partial class DefaultOfTimestampData :  IEquatable<DefaultOfTimestampData>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="DefaultUsageResponse" /> class.
+        /// Initializes a new instance of the <see cref="DefaultOfTimestampData" /> class.
         /// </summary>
         /// <param name="data">Generic response object which contains the response data, e.g. timestamp information..</param>
         /// <param name="errorCode">Contains the error of the request. If the error code is 0, everything is fine..</param>
         /// <param name="errorMessage">Contains the error message, that possibly occurred. If it is empty, everything is fine..</param>
-        public DefaultUsageResponse(UsageResponse data = default(UsageResponse), int? errorCode = default(int?), string errorMessage = default(string))
+        public DefaultOfTimestampData(TimestampData data = default(TimestampData), int? errorCode = default(int?), string errorMessage = default(string))
         {
             this.Data = data;
             this.ErrorCode = errorCode;
@@ -47,7 +47,7 @@ namespace OriginStamp.Client.Model
         /// </summary>
         /// <value>Generic response object which contains the response data, e.g. timestamp information.</value>
         [DataMember(Name="data", EmitDefaultValue=false)]
-        public UsageResponse Data { get; set; }
+        public TimestampData Data { get; set; }
 
         /// <summary>
         /// Contains the error of the request. If the error code is 0, everything is fine.
@@ -70,7 +70,7 @@ namespace OriginStamp.Client.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class DefaultUsageResponse {\n");
+            sb.Append("class DefaultOfTimestampData {\n");
             sb.Append("  Data: ").Append(Data).Append("\n");
             sb.Append("  ErrorCode: ").Append(ErrorCode).Append("\n");
             sb.Append("  ErrorMessage: ").Append(ErrorMessage).Append("\n");
@@ -94,15 +94,15 @@ namespace OriginStamp.Client.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as DefaultUsageResponse);
+            return this.Equals(input as DefaultOfTimestampData);
         }
 
         /// <summary>
-        /// Returns true if DefaultUsageResponse instances are equal
+        /// Returns true if DefaultOfTimestampData instances are equal
         /// </summary>
-        /// <param name="input">Instance of DefaultUsageResponse to be compared</param>
+        /// <param name="input">Instance of DefaultOfTimestampData to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(DefaultUsageResponse input)
+        public bool Equals(DefaultOfTimestampData input)
         {
             if (input == null)
                 return false;

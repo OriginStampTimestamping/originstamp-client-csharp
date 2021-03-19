@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("OriginStamp")]
 [assembly: AssemblyProduct("OriginStampClient")]
-[assembly: AssemblyCopyright("OriginStamp 2019")]
+[assembly: AssemblyCopyright("OriginStamp 2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

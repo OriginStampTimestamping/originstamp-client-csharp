@@ -1,6 +1,6 @@
-/* 
+/*
  * OriginStamp Client
- * 
+ *
  * OpenAPI spec version: 3.0
  * OriginStamp Documentation: https://docs.originstamp.com
  * Contact: mail@originstamp.com
@@ -32,18 +32,20 @@ namespace OriginStamp.Client.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TimestampData" /> class.
         /// </summary>
-        /// <param name="CurrencyId">0: Bitcoin.</param>
-        /// <param name="PrivateKey">The private key represents the top hash in the Merkle Tree (see https://en.wikipedia.org/wiki/Merkle_tree ) or the hash of all hashes in the transaction..</param>
-        /// <param name="SubmitStatus">The submit status of the hash:   0: the hash was not broadcasted yet  1: the hash was included into a transaction and broadcasted to the network, but not included into a block  2: the transaction was included into the latest block  3: the timestamp for your hash was successfully created..</param>
-        /// <param name="Timestamp">The date is returned in the following format: [ms] since 1.1.1970 (unix epoch), timezone: UTC. This is a true timestamp..</param>
-        /// <param name="Transaction">If available: the transaction hash of the timestamp..</param>
-        public TimestampData(int? CurrencyId = default(int?), string PrivateKey = default(string), long? SubmitStatus = default(long?), long? Timestamp = default(long?), string Transaction = default(string))
+        /// <param name="currencyId">0: Bitcoin.</param>
+        /// <param name="privateKey">The private key represents the top hash in the Merkle Tree (see https://en.wikipedia.org/wiki/Merkle_tree ) or the hash of all hashes in the transaction..</param>
+        /// <param name="seedId">ID of associated seed which can be used to request separate seed information..</param>
+        /// <param name="submitStatus">The submit status of the hash:   0: the hash was not broadcasted yet  1: the hash was included into a transaction and broadcasted to the network, but not included into a block  2: the transaction was included into the latest block  3: the timestamp for your hash was successfully created..</param>
+        /// <param name="timestamp">The date is returned in the following format: [ms] since 1.1.1970 (unix epoch), timezone: UTC. This is a true timestamp..</param>
+        /// <param name="transaction">If available: the transaction hash of the timestamp..</param>
+        public TimestampData(int? currencyId = default(int?), string privateKey = default(string), string seedId = default(string), long? submitStatus = default(long?), long? timestamp = default(long?), string transaction = default(string))
         {
-            this.CurrencyId = CurrencyId;
-            this.PrivateKey = PrivateKey;
-            this.SubmitStatus = SubmitStatus;
-            this.Timestamp = Timestamp;
-            this.Transaction = Transaction;
+            this.CurrencyId = currencyId;
+            this.PrivateKey = privateKey;
+            this.SeedId = seedId;
+            this.SubmitStatus = submitStatus;
+            this.Timestamp = timestamp;
+            this.Transaction = transaction;
         }
         
         /// <summary>
@@ -59,6 +61,13 @@ namespace OriginStamp.Client.Model
         /// <value>The private key represents the top hash in the Merkle Tree (see https://en.wikipedia.org/wiki/Merkle_tree ) or the hash of all hashes in the transaction.</value>
         [DataMember(Name="private_key", EmitDefaultValue=false)]
         public string PrivateKey { get; set; }
+
+        /// <summary>
+        /// ID of associated seed which can be used to request separate seed information.
+        /// </summary>
+        /// <value>ID of associated seed which can be used to request separate seed information.</value>
+        [DataMember(Name="seed_id", EmitDefaultValue=false)]
+        public string SeedId { get; set; }
 
         /// <summary>
         /// The submit status of the hash:   0: the hash was not broadcasted yet  1: the hash was included into a transaction and broadcasted to the network, but not included into a block  2: the transaction was included into the latest block  3: the timestamp for your hash was successfully created.
@@ -91,6 +100,7 @@ namespace OriginStamp.Client.Model
             sb.Append("class TimestampData {\n");
             sb.Append("  CurrencyId: ").Append(CurrencyId).Append("\n");
             sb.Append("  PrivateKey: ").Append(PrivateKey).Append("\n");
+            sb.Append("  SeedId: ").Append(SeedId).Append("\n");
             sb.Append("  SubmitStatus: ").Append(SubmitStatus).Append("\n");
             sb.Append("  Timestamp: ").Append(Timestamp).Append("\n");
             sb.Append("  Transaction: ").Append(Transaction).Append("\n");
@@ -102,7 +112,7 @@ namespace OriginStamp.Client.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -139,6 +149,11 @@ namespace OriginStamp.Client.Model
                     this.PrivateKey.Equals(input.PrivateKey))
                 ) && 
                 (
+                    this.SeedId == input.SeedId ||
+                    (this.SeedId != null &&
+                    this.SeedId.Equals(input.SeedId))
+                ) && 
+                (
                     this.SubmitStatus == input.SubmitStatus ||
                     (this.SubmitStatus != null &&
                     this.SubmitStatus.Equals(input.SubmitStatus))
@@ -168,6 +183,8 @@ namespace OriginStamp.Client.Model
                     hashCode = hashCode * 59 + this.CurrencyId.GetHashCode();
                 if (this.PrivateKey != null)
                     hashCode = hashCode * 59 + this.PrivateKey.GetHashCode();
+                if (this.SeedId != null)
+                    hashCode = hashCode * 59 + this.SeedId.GetHashCode();
                 if (this.SubmitStatus != null)
                     hashCode = hashCode * 59 + this.SubmitStatus.GetHashCode();
                 if (this.Timestamp != null)

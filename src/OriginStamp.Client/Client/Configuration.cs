@@ -1,6 +1,6 @@
-/* 
+/*
  * OriginStamp Client
- * 
+ *
  * OpenAPI spec version: 3.0
  * OriginStamp Documentation: https://docs.originstamp.com
  * Contact: mail@originstamp.com
@@ -28,7 +28,7 @@ namespace OriginStamp.Client.Client
         /// Version of the package.
         /// </summary>
         /// <value>Version of the package.</value>
-        public const string Version = "1.0.3";
+        public const string Version = "1.0.0";
 
         /// <summary>
         /// Identifier for ISO 8601 DateTime Format
@@ -328,7 +328,7 @@ namespace OriginStamp.Client.Client
         }
 
         /// <summary>
-        /// Gets or sets the the date time format used when serializing in the ApiClient
+        /// Gets or sets the date time format used when serializing in the ApiClient
         /// By default, it's set to ISO 8601 - "o", for others see:
         /// https://msdn.microsoft.com/en-us/library/az4se3k1(v=vs.110).aspx
         /// and https://msdn.microsoft.com/en-us/library/8kb3ddd4(v=vs.110).aspx

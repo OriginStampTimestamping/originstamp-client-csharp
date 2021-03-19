@@ -1,6 +1,6 @@
-/* 
+/*
  * OriginStamp Client
- * 
+ *
  * OpenAPI spec version: 3.0
  * OriginStamp Documentation: https://docs.originstamp.com
  * Contact: mail@originstamp.com
@@ -27,19 +27,19 @@ namespace OriginStamp.Client.Model
     /// The default service response object uses error code and message to indicate errors. These errors are handled by the client.
     /// </summary>
     [DataContract]
-    public partial class Defaultstring :  IEquatable<Defaultstring>, IValidatableObject
+    public partial class DefaultOfstring :  IEquatable<DefaultOfstring>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Defaultstring" /> class.
+        /// Initializes a new instance of the <see cref="DefaultOfstring" /> class.
         /// </summary>
-        /// <param name="Data">Generic response object which contains the response data, e.g. timestamp information..</param>
-        /// <param name="ErrorCode">Contains the error of the request. If the error code is 0, everything is fine..</param>
-        /// <param name="ErrorMessage">Contains the error message, that possibly occurred. If it is empty, everything is fine..</param>
-        public Defaultstring(string Data = default(string), int? ErrorCode = default(int?), string ErrorMessage = default(string))
+        /// <param name="data">Generic response object which contains the response data, e.g. timestamp information..</param>
+        /// <param name="errorCode">Contains the error of the request. If the error code is 0, everything is fine..</param>
+        /// <param name="errorMessage">Contains the error message, that possibly occurred. If it is empty, everything is fine..</param>
+        public DefaultOfstring(string data = default(string), int? errorCode = default(int?), string errorMessage = default(string))
         {
-            this.Data = Data;
-            this.ErrorCode = ErrorCode;
-            this.ErrorMessage = ErrorMessage;
+            this.Data = data;
+            this.ErrorCode = errorCode;
+            this.ErrorMessage = errorMessage;
         }
         
         /// <summary>
@@ -70,7 +70,7 @@ namespace OriginStamp.Client.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class Defaultstring {\n");
+            sb.Append("class DefaultOfstring {\n");
             sb.Append("  Data: ").Append(Data).Append("\n");
             sb.Append("  ErrorCode: ").Append(ErrorCode).Append("\n");
             sb.Append("  ErrorMessage: ").Append(ErrorMessage).Append("\n");
@@ -82,7 +82,7 @@ namespace OriginStamp.Client.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -94,15 +94,15 @@ namespace OriginStamp.Client.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as Defaultstring);
+            return this.Equals(input as DefaultOfstring);
         }
 
         /// <summary>
-        /// Returns true if Defaultstring instances are equal
+        /// Returns true if DefaultOfstring instances are equal
         /// </summary>
-        /// <param name="input">Instance of Defaultstring to be compared</param>
+        /// <param name="input">Instance of DefaultOfstring to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Defaultstring input)
+        public bool Equals(DefaultOfstring input)
         {
             if (input == null)
                 return false;

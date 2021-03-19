@@ -1,6 +1,6 @@
-/* 
+/*
  * OriginStamp Client
- * 
+ *
  * OpenAPI spec version: 3.0
  * OriginStamp Documentation: https://docs.originstamp.com
  * Contact: mail@originstamp.com
@@ -27,19 +27,19 @@ namespace OriginStamp.Client.Model
     /// The default service response object uses error code and message to indicate errors. These errors are handled by the client.
     /// </summary>
     [DataContract]
-    public partial class DefaultSchedulerResponse :  IEquatable<DefaultSchedulerResponse>, IValidatableObject
+    public partial class DefaultOfWebhookResponse :  IEquatable<DefaultOfWebhookResponse>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="DefaultSchedulerResponse" /> class.
+        /// Initializes a new instance of the <see cref="DefaultOfWebhookResponse" /> class.
         /// </summary>
-        /// <param name="Data">Generic response object which contains the response data, e.g. timestamp information..</param>
-        /// <param name="ErrorCode">Contains the error of the request. If the error code is 0, everything is fine..</param>
-        /// <param name="ErrorMessage">Contains the error message, that possibly occurred. If it is empty, everything is fine..</param>
-        public DefaultSchedulerResponse(SchedulerResponse Data = default(SchedulerResponse), int? ErrorCode = default(int?), string ErrorMessage = default(string))
+        /// <param name="data">Generic response object which contains the response data, e.g. timestamp information..</param>
+        /// <param name="errorCode">Contains the error of the request. If the error code is 0, everything is fine..</param>
+        /// <param name="errorMessage">Contains the error message, that possibly occurred. If it is empty, everything is fine..</param>
+        public DefaultOfWebhookResponse(WebhookResponse data = default(WebhookResponse), int? errorCode = default(int?), string errorMessage = default(string))
         {
-            this.Data = Data;
-            this.ErrorCode = ErrorCode;
-            this.ErrorMessage = ErrorMessage;
+            this.Data = data;
+            this.ErrorCode = errorCode;
+            this.ErrorMessage = errorMessage;
         }
         
         /// <summary>
@@ -47,7 +47,7 @@ namespace OriginStamp.Client.Model
         /// </summary>
         /// <value>Generic response object which contains the response data, e.g. timestamp information.</value>
         [DataMember(Name="data", EmitDefaultValue=false)]
-        public SchedulerResponse Data { get; set; }
+        public WebhookResponse Data { get; set; }
 
         /// <summary>
         /// Contains the error of the request. If the error code is 0, everything is fine.
@@ -70,7 +70,7 @@ namespace OriginStamp.Client.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class DefaultSchedulerResponse {\n");
+            sb.Append("class DefaultOfWebhookResponse {\n");
             sb.Append("  Data: ").Append(Data).Append("\n");
             sb.Append("  ErrorCode: ").Append(ErrorCode).Append("\n");
             sb.Append("  ErrorMessage: ").Append(ErrorMessage).Append("\n");
@@ -82,7 +82,7 @@ namespace OriginStamp.Client.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -94,15 +94,15 @@ namespace OriginStamp.Client.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as DefaultSchedulerResponse);
+            return this.Equals(input as DefaultOfWebhookResponse);
         }
 
         /// <summary>
-        /// Returns true if DefaultSchedulerResponse instances are equal
+        /// Returns true if DefaultOfWebhookResponse instances are equal
         /// </summary>
-        /// <param name="input">Instance of DefaultSchedulerResponse to be compared</param>
+        /// <param name="input">Instance of DefaultOfWebhookResponse to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(DefaultSchedulerResponse input)
+        public bool Equals(DefaultOfWebhookResponse input)
         {
             if (input == null)
                 return false;

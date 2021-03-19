@@ -1,6 +1,6 @@
-/* 
+/*
  * OriginStamp Client
- * 
+ *
  * OpenAPI spec version: 3.0
  * OriginStamp Documentation: https://docs.originstamp.com
  * Contact: mail@originstamp.com
@@ -37,24 +37,22 @@ namespace OriginStamp.Client.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TimestampRequest" /> class.
         /// </summary>
-        /// <param name="Comment">You can add a short comment (max. 256 characters) which can be used for indexing and searching (public)..</param>
-        /// <param name="Hash">Hash in HEX representation. We suggest to use SHA-256. This hash will be aggregated and included into the blockchain. (required).</param>
-        /// <param name="Notifications">Add a notification/notification list to your submission. Our system will notify the specified target with the timestamp information..</param>
-        /// <param name="Url">Preprint URL. Insert the generated UUID here. You can generate an UUID-4 and include it into your document: https://originstamp.org/u/uuid4. When submitting the your file, the url is part of the hash, which finally means it the link to the timestamp is part of the timestamp..</param>
-        public TimestampRequest(string Comment = default(string), string Hash = default(string), List<Notification> Notifications = default(List<Notification>), string Url = default(string))
+        /// <param name="comment">You can add a short comment (max. 256 characters) which can be used for indexing and searching (public)..</param>
+        /// <param name="hash">Hash in HEX representation. We suggest to use SHA-256. This hash will be aggregated and included into the blockchain. (required).</param>
+        /// <param name="notifications">Add a notification/notification list to your submission. Our system will notify the specified target with the timestamp information..</param>
+        public TimestampRequest(string comment = default(string), string hash = default(string), List<Notification> notifications = default(List<Notification>))
         {
-            // to ensure "Hash" is required (not null)
-            if (Hash == null)
+            // to ensure "hash" is required (not null)
+            if (hash == null)
             {
-                throw new InvalidDataException("Hash is a required property for TimestampRequest and cannot be null");
+                throw new InvalidDataException("hash is a required property for TimestampRequest and cannot be null");
             }
             else
             {
-                this.Hash = Hash;
+                this.Hash = hash;
             }
-            this.Comment = Comment;
-            this.Notifications = Notifications;
-            this.Url = Url;
+            this.Comment = comment;
+            this.Notifications = notifications;
         }
         
         /// <summary>
@@ -79,13 +77,6 @@ namespace OriginStamp.Client.Model
         public List<Notification> Notifications { get; set; }
 
         /// <summary>
-        /// Preprint URL. Insert the generated UUID here. You can generate an UUID-4 and include it into your document: https://originstamp.org/u/uuid4. When submitting the your file, the url is part of the hash, which finally means it the link to the timestamp is part of the timestamp.
-        /// </summary>
-        /// <value>Preprint URL. Insert the generated UUID here. You can generate an UUID-4 and include it into your document: https://originstamp.org/u/uuid4. When submitting the your file, the url is part of the hash, which finally means it the link to the timestamp is part of the timestamp.</value>
-        [DataMember(Name="url", EmitDefaultValue=false)]
-        public string Url { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -96,7 +87,6 @@ namespace OriginStamp.Client.Model
             sb.Append("  Comment: ").Append(Comment).Append("\n");
             sb.Append("  Hash: ").Append(Hash).Append("\n");
             sb.Append("  Notifications: ").Append(Notifications).Append("\n");
-            sb.Append("  Url: ").Append(Url).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -105,7 +95,7 @@ namespace OriginStamp.Client.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -145,11 +135,6 @@ namespace OriginStamp.Client.Model
                     this.Notifications == input.Notifications ||
                     this.Notifications != null &&
                     this.Notifications.SequenceEqual(input.Notifications)
-                ) && 
-                (
-                    this.Url == input.Url ||
-                    (this.Url != null &&
-                    this.Url.Equals(input.Url))
                 );
         }
 
@@ -168,8 +153,6 @@ namespace OriginStamp.Client.Model
                     hashCode = hashCode * 59 + this.Hash.GetHashCode();
                 if (this.Notifications != null)
                     hashCode = hashCode * 59 + this.Notifications.GetHashCode();
-                if (this.Url != null)
-                    hashCode = hashCode * 59 + this.Url.GetHashCode();
                 return hashCode;
             }
         }

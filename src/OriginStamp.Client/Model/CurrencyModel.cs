@@ -1,6 +1,6 @@
-/* 
+/*
  * OriginStamp Client
- * 
+ *
  * OpenAPI spec version: 3.0
  * OriginStamp Documentation: https://docs.originstamp.com
  * Contact: mail@originstamp.com
@@ -24,26 +24,35 @@ using SwaggerDateConverter = OriginStamp.Client.Client.SwaggerDateConverter;
 namespace OriginStamp.Client.Model
 {
     /// <summary>
-    /// DTO for schedule request.
+    /// Contains the currency ID and currency name
     /// </summary>
     [DataContract]
-    public partial class SchedulerRequest :  IEquatable<SchedulerRequest>, IValidatableObject
+    public partial class CurrencyModel :  IEquatable<CurrencyModel>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SchedulerRequest" /> class.
+        /// Initializes a new instance of the <see cref="CurrencyModel" /> class.
         /// </summary>
-        /// <param name="Currency">Currency for which the next submission time should be retrieved.  0: Bitcoin.</param>
-        public SchedulerRequest(int? Currency = default(int?))
+        /// <param name="currency">Name of the currency (uppercase).</param>
+        /// <param name="currencyId">ID of the currency, e.g. 0: Bitcoin 1: Ethereum.</param>
+        public CurrencyModel(string currency = default(string), long? currencyId = default(long?))
         {
-            this.Currency = Currency;
+            this.Currency = currency;
+            this.CurrencyId = currencyId;
         }
         
         /// <summary>
-        /// Currency for which the next submission time should be retrieved.  0: Bitcoin
+        /// Name of the currency (uppercase)
         /// </summary>
-        /// <value>Currency for which the next submission time should be retrieved.  0: Bitcoin</value>
+        /// <value>Name of the currency (uppercase)</value>
         [DataMember(Name="currency", EmitDefaultValue=false)]
-        public int? Currency { get; set; }
+        public string Currency { get; set; }
+
+        /// <summary>
+        /// ID of the currency, e.g. 0: Bitcoin 1: Ethereum
+        /// </summary>
+        /// <value>ID of the currency, e.g. 0: Bitcoin 1: Ethereum</value>
+        [DataMember(Name="currency_id", EmitDefaultValue=false)]
+        public long? CurrencyId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -52,8 +61,9 @@ namespace OriginStamp.Client.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class SchedulerRequest {\n");
+            sb.Append("class CurrencyModel {\n");
             sb.Append("  Currency: ").Append(Currency).Append("\n");
+            sb.Append("  CurrencyId: ").Append(CurrencyId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -62,7 +72,7 @@ namespace OriginStamp.Client.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -74,15 +84,15 @@ namespace OriginStamp.Client.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as SchedulerRequest);
+            return this.Equals(input as CurrencyModel);
         }
 
         /// <summary>
-        /// Returns true if SchedulerRequest instances are equal
+        /// Returns true if CurrencyModel instances are equal
         /// </summary>
-        /// <param name="input">Instance of SchedulerRequest to be compared</param>
+        /// <param name="input">Instance of CurrencyModel to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(SchedulerRequest input)
+        public bool Equals(CurrencyModel input)
         {
             if (input == null)
                 return false;
@@ -92,6 +102,11 @@ namespace OriginStamp.Client.Model
                     this.Currency == input.Currency ||
                     (this.Currency != null &&
                     this.Currency.Equals(input.Currency))
+                ) && 
+                (
+                    this.CurrencyId == input.CurrencyId ||
+                    (this.CurrencyId != null &&
+                    this.CurrencyId.Equals(input.CurrencyId))
                 );
         }
 
@@ -106,6 +121,8 @@ namespace OriginStamp.Client.Model
                 int hashCode = 41;
                 if (this.Currency != null)
                     hashCode = hashCode * 59 + this.Currency.GetHashCode();
+                if (this.CurrencyId != null)
+                    hashCode = hashCode * 59 + this.CurrencyId.GetHashCode();
                 return hashCode;
             }
         }
