@@ -1,6 +1,6 @@
-/* 
+/*
  * OriginStamp Client
- * 
+ *
  * OpenAPI spec version: 3.0
  * OriginStamp Documentation: https://docs.originstamp.com
  * Contact: mail@originstamp.com

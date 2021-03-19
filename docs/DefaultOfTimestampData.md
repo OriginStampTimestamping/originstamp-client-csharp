@@ -1,9 +1,9 @@
-# OriginStamp.Client.Model.DefaultTimestampResponse
+# OriginStamp.Client.Model.DefaultOfTimestampData
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | [**TimestampResponse**](TimestampResponse.md) | Generic response object which contains the response data, e.g. timestamp information. | [optional] 
+**Data** | [**TimestampData**](TimestampData.md) | Generic response object which contains the response data, e.g. timestamp information. | [optional] 
 **ErrorCode** | **int?** | Contains the error of the request. If the error code is 0, everything is fine. | [optional] 
 **ErrorMessage** | **string** | Contains the error message, that possibly occurred. If it is empty, everything is fine. | [optional] 
 

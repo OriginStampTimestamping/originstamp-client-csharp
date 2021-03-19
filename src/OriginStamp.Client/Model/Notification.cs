@@ -1,6 +1,6 @@
-/* 
+/*
  * OriginStamp Client
- * 
+ *
  * OpenAPI spec version: 3.0
  * OriginStamp Documentation: https://docs.originstamp.com
  * Contact: mail@originstamp.com
@@ -37,37 +37,37 @@ namespace OriginStamp.Client.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Notification" /> class.
         /// </summary>
-        /// <param name="Currency">0: Bitcoin (required).</param>
-        /// <param name="NotificationType">0: notify via email  1: notify a webhook (required).</param>
-        /// <param name="Target">Depending on the notification type, specify the target for the notification (e.g. email address or webhook url). The webhook url will reveive a POST request after timestamp was successfully created. (required).</param>
-        public Notification(int? Currency = default(int?), int? NotificationType = default(int?), string Target = default(string))
+        /// <param name="currency">0: Bitcoin (required).</param>
+        /// <param name="notificationType">0: notify via email  1: notify a webhook (required).</param>
+        /// <param name="target">Depending on the notification type, specify the target for the notification (e.g. mail address or webhook URL). The webhook URL will receive a POST request after timestamp was successfully created. (required).</param>
+        public Notification(int? currency = default(int?), int? notificationType = default(int?), string target = default(string))
         {
-            // to ensure "Currency" is required (not null)
-            if (Currency == null)
+            // to ensure "currency" is required (not null)
+            if (currency == null)
             {
-                throw new InvalidDataException("Currency is a required property for Notification and cannot be null");
+                throw new InvalidDataException("currency is a required property for Notification and cannot be null");
             }
             else
             {
-                this.Currency = Currency;
+                this.Currency = currency;
             }
-            // to ensure "NotificationType" is required (not null)
-            if (NotificationType == null)
+            // to ensure "notificationType" is required (not null)
+            if (notificationType == null)
             {
-                throw new InvalidDataException("NotificationType is a required property for Notification and cannot be null");
-            }
-            else
-            {
-                this.NotificationType = NotificationType;
-            }
-            // to ensure "Target" is required (not null)
-            if (Target == null)
-            {
-                throw new InvalidDataException("Target is a required property for Notification and cannot be null");
+                throw new InvalidDataException("notificationType is a required property for Notification and cannot be null");
             }
             else
             {
-                this.Target = Target;
+                this.NotificationType = notificationType;
+            }
+            // to ensure "target" is required (not null)
+            if (target == null)
+            {
+                throw new InvalidDataException("target is a required property for Notification and cannot be null");
+            }
+            else
+            {
+                this.Target = target;
             }
         }
         
@@ -86,9 +86,9 @@ namespace OriginStamp.Client.Model
         public int? NotificationType { get; set; }
 
         /// <summary>
-        /// Depending on the notification type, specify the target for the notification (e.g. email address or webhook url). The webhook url will reveive a POST request after timestamp was successfully created.
+        /// Depending on the notification type, specify the target for the notification (e.g. mail address or webhook URL). The webhook URL will receive a POST request after timestamp was successfully created.
         /// </summary>
-        /// <value>Depending on the notification type, specify the target for the notification (e.g. email address or webhook url). The webhook url will reveive a POST request after timestamp was successfully created.</value>
+        /// <value>Depending on the notification type, specify the target for the notification (e.g. mail address or webhook URL). The webhook URL will receive a POST request after timestamp was successfully created.</value>
         [DataMember(Name="target", EmitDefaultValue=false)]
         public string Target { get; set; }
 
@@ -111,7 +111,7 @@ namespace OriginStamp.Client.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

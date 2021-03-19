@@ -24,44 +24,62 @@ using SwaggerDateConverter = OriginStamp.Client.Client.SwaggerDateConverter;
 namespace OriginStamp.Client.Model
 {
     /// <summary>
-    /// Request object for a webhook request.
+    /// response object for a webhook request. Contains only the most recent webhook information for target URL, hash and currency.
     /// </summary>
     [DataContract]
-    public partial class WebhookRequest :  IEquatable<WebhookRequest>, IValidatableObject
+    public partial class WebhookResponse :  IEquatable<WebhookResponse>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="WebhookRequest" /> class.
+        /// Initializes a new instance of the <see cref="WebhookResponse" /> class.
         /// </summary>
-        /// <param name="currency">Currency ID for which the webhook should be executed. Possible values: 0: Bitcoin 1: Ethereum 2: AION 100: Südkurier.</param>
-        /// <param name="hash">Hash (SHA-256 in HEX) for which a notification is requested..</param>
-        /// <param name="target">Target address to which a POST request should be executed..</param>
-        public WebhookRequest(int? currency = default(int?), string hash = default(string), string target = default(string))
+        /// <param name="currency">Currency for which the webhook is triggered, e.g.  0: Bitcoin 1: Ethereum.</param>
+        /// <param name="executed">Shows if the webhook was executed..</param>
+        /// <param name="hash">The submitted hash in hex representation..</param>
+        /// <param name="success">Indicates whether the webhook was executed successfully or not..</param>
+        /// <param name="tries">Returns the number of tries for the webhook execution..</param>
+        public WebhookResponse(int? currency = default(int?), bool? executed = default(bool?), string hash = default(string), bool? success = default(bool?), int? tries = default(int?))
         {
             this.Currency = currency;
+            this.Executed = executed;
             this.Hash = hash;
-            this.Target = target;
+            this.Success = success;
+            this.Tries = tries;
         }
         
         /// <summary>
-        /// Currency ID for which the webhook should be executed. Possible values: 0: Bitcoin 1: Ethereum 2: AION 100: Südkurier
+        /// Currency for which the webhook is triggered, e.g.  0: Bitcoin 1: Ethereum
         /// </summary>
-        /// <value>Currency ID for which the webhook should be executed. Possible values: 0: Bitcoin 1: Ethereum 2: AION 100: Südkurier</value>
+        /// <value>Currency for which the webhook is triggered, e.g.  0: Bitcoin 1: Ethereum</value>
         [DataMember(Name="currency", EmitDefaultValue=false)]
         public int? Currency { get; set; }
 
         /// <summary>
-        /// Hash (SHA-256 in HEX) for which a notification is requested.
+        /// Shows if the webhook was executed.
         /// </summary>
-        /// <value>Hash (SHA-256 in HEX) for which a notification is requested.</value>
+        /// <value>Shows if the webhook was executed.</value>
+        [DataMember(Name="executed", EmitDefaultValue=false)]
+        public bool? Executed { get; set; }
+
+        /// <summary>
+        /// The submitted hash in hex representation.
+        /// </summary>
+        /// <value>The submitted hash in hex representation.</value>
         [DataMember(Name="hash", EmitDefaultValue=false)]
         public string Hash { get; set; }
 
         /// <summary>
-        /// Target address to which a POST request should be executed.
+        /// Indicates whether the webhook was executed successfully or not.
         /// </summary>
-        /// <value>Target address to which a POST request should be executed.</value>
-        [DataMember(Name="target", EmitDefaultValue=false)]
-        public string Target { get; set; }
+        /// <value>Indicates whether the webhook was executed successfully or not.</value>
+        [DataMember(Name="success", EmitDefaultValue=false)]
+        public bool? Success { get; set; }
+
+        /// <summary>
+        /// Returns the number of tries for the webhook execution.
+        /// </summary>
+        /// <value>Returns the number of tries for the webhook execution.</value>
+        [DataMember(Name="tries", EmitDefaultValue=false)]
+        public int? Tries { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -70,10 +88,12 @@ namespace OriginStamp.Client.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class WebhookRequest {\n");
+            sb.Append("class WebhookResponse {\n");
             sb.Append("  Currency: ").Append(Currency).Append("\n");
+            sb.Append("  Executed: ").Append(Executed).Append("\n");
             sb.Append("  Hash: ").Append(Hash).Append("\n");
-            sb.Append("  Target: ").Append(Target).Append("\n");
+            sb.Append("  Success: ").Append(Success).Append("\n");
+            sb.Append("  Tries: ").Append(Tries).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -94,15 +114,15 @@ namespace OriginStamp.Client.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as WebhookRequest);
+            return this.Equals(input as WebhookResponse);
         }
 
         /// <summary>
-        /// Returns true if WebhookRequest instances are equal
+        /// Returns true if WebhookResponse instances are equal
         /// </summary>
-        /// <param name="input">Instance of WebhookRequest to be compared</param>
+        /// <param name="input">Instance of WebhookResponse to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(WebhookRequest input)
+        public bool Equals(WebhookResponse input)
         {
             if (input == null)
                 return false;
@@ -114,14 +134,24 @@ namespace OriginStamp.Client.Model
                     this.Currency.Equals(input.Currency))
                 ) && 
                 (
+                    this.Executed == input.Executed ||
+                    (this.Executed != null &&
+                    this.Executed.Equals(input.Executed))
+                ) && 
+                (
                     this.Hash == input.Hash ||
                     (this.Hash != null &&
                     this.Hash.Equals(input.Hash))
                 ) && 
                 (
-                    this.Target == input.Target ||
-                    (this.Target != null &&
-                    this.Target.Equals(input.Target))
+                    this.Success == input.Success ||
+                    (this.Success != null &&
+                    this.Success.Equals(input.Success))
+                ) && 
+                (
+                    this.Tries == input.Tries ||
+                    (this.Tries != null &&
+                    this.Tries.Equals(input.Tries))
                 );
         }
 
@@ -136,10 +166,14 @@ namespace OriginStamp.Client.Model
                 int hashCode = 41;
                 if (this.Currency != null)
                     hashCode = hashCode * 59 + this.Currency.GetHashCode();
+                if (this.Executed != null)
+                    hashCode = hashCode * 59 + this.Executed.GetHashCode();
                 if (this.Hash != null)
                     hashCode = hashCode * 59 + this.Hash.GetHashCode();
-                if (this.Target != null)
-                    hashCode = hashCode * 59 + this.Target.GetHashCode();
+                if (this.Success != null)
+                    hashCode = hashCode * 59 + this.Success.GetHashCode();
+                if (this.Tries != null)
+                    hashCode = hashCode * 59 + this.Tries.GetHashCode();
                 return hashCode;
             }
         }

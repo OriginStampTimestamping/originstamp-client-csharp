@@ -20,68 +20,68 @@ namespace OriginStamp.Client.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface ISchedulerApi : IApiAccessor
+    public interface IAPIKeyApi : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
-        /// Get active currencies
+        /// Usage
         /// </summary>
         /// <remarks>
-        /// Returns an array with all active currencies.
+        /// With this interface you can receive the current usage of your API key. The usage statistic refers to the associated account.
         /// </remarks>
         /// <exception cref="OriginStamp.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">A valid API key is essential for authorization to handle the request.</param>
-        /// <returns>DefaultOfListOfCurrencyModel</returns>
-        DefaultOfListOfCurrencyModel GetActiveCurrencies (string authorization);
+        /// <returns>DefaultUsageResponse</returns>
+        DefaultUsageResponse GetApiKeyUsage (string authorization);
 
         /// <summary>
-        /// Get active currencies
+        /// Usage
         /// </summary>
         /// <remarks>
-        /// Returns an array with all active currencies.
+        /// With this interface you can receive the current usage of your API key. The usage statistic refers to the associated account.
         /// </remarks>
         /// <exception cref="OriginStamp.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">A valid API key is essential for authorization to handle the request.</param>
-        /// <returns>ApiResponse of DefaultOfListOfCurrencyModel</returns>
-        ApiResponse<DefaultOfListOfCurrencyModel> GetActiveCurrenciesWithHttpInfo (string authorization);
+        /// <returns>ApiResponse of DefaultUsageResponse</returns>
+        ApiResponse<DefaultUsageResponse> GetApiKeyUsageWithHttpInfo (string authorization);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// Get active currencies
+        /// Usage
         /// </summary>
         /// <remarks>
-        /// Returns an array with all active currencies.
+        /// With this interface you can receive the current usage of your API key. The usage statistic refers to the associated account.
         /// </remarks>
         /// <exception cref="OriginStamp.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">A valid API key is essential for authorization to handle the request.</param>
-        /// <returns>Task of DefaultOfListOfCurrencyModel</returns>
-        System.Threading.Tasks.Task<DefaultOfListOfCurrencyModel> GetActiveCurrenciesAsync (string authorization);
+        /// <returns>Task of DefaultUsageResponse</returns>
+        System.Threading.Tasks.Task<DefaultUsageResponse> GetApiKeyUsageAsync (string authorization);
 
         /// <summary>
-        /// Get active currencies
+        /// Usage
         /// </summary>
         /// <remarks>
-        /// Returns an array with all active currencies.
+        /// With this interface you can receive the current usage of your API key. The usage statistic refers to the associated account.
         /// </remarks>
         /// <exception cref="OriginStamp.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">A valid API key is essential for authorization to handle the request.</param>
-        /// <returns>Task of ApiResponse (DefaultOfListOfCurrencyModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DefaultOfListOfCurrencyModel>> GetActiveCurrenciesAsyncWithHttpInfo (string authorization);
+        /// <returns>Task of ApiResponse (DefaultUsageResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<DefaultUsageResponse>> GetApiKeyUsageAsyncWithHttpInfo (string authorization);
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class SchedulerApi : ISchedulerApi
+    public partial class APIKeyApi : IAPIKeyApi
     {
         private OriginStamp.Client.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SchedulerApi"/> class.
+        /// Initializes a new instance of the <see cref="APIKeyApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public SchedulerApi(String basePath)
+        public APIKeyApi(String basePath)
         {
             this.Configuration = new OriginStamp.Client.Client.Configuration { BasePath = basePath };
 
@@ -89,12 +89,12 @@ namespace OriginStamp.Client.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SchedulerApi"/> class
+        /// Initializes a new instance of the <see cref="APIKeyApi"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public SchedulerApi(OriginStamp.Client.Client.Configuration configuration = null)
+        public APIKeyApi(OriginStamp.Client.Client.Configuration configuration = null)
         {
             if (configuration == null) // use the default one in Configuration
                 this.Configuration = OriginStamp.Client.Client.Configuration.Default;
@@ -168,30 +168,30 @@ namespace OriginStamp.Client.Api
         }
 
         /// <summary>
-        /// Get active currencies Returns an array with all active currencies.
+        /// Usage With this interface you can receive the current usage of your API key. The usage statistic refers to the associated account.
         /// </summary>
         /// <exception cref="OriginStamp.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">A valid API key is essential for authorization to handle the request.</param>
-        /// <returns>DefaultOfListOfCurrencyModel</returns>
-        public DefaultOfListOfCurrencyModel GetActiveCurrencies (string authorization)
+        /// <returns>DefaultUsageResponse</returns>
+        public DefaultUsageResponse GetApiKeyUsage (string authorization)
         {
-             ApiResponse<DefaultOfListOfCurrencyModel> localVarResponse = GetActiveCurrenciesWithHttpInfo(authorization);
+             ApiResponse<DefaultUsageResponse> localVarResponse = GetApiKeyUsageWithHttpInfo(authorization);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Get active currencies Returns an array with all active currencies.
+        /// Usage With this interface you can receive the current usage of your API key. The usage statistic refers to the associated account.
         /// </summary>
         /// <exception cref="OriginStamp.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">A valid API key is essential for authorization to handle the request.</param>
-        /// <returns>ApiResponse of DefaultOfListOfCurrencyModel</returns>
-        public ApiResponse< DefaultOfListOfCurrencyModel > GetActiveCurrenciesWithHttpInfo (string authorization)
+        /// <returns>ApiResponse of DefaultUsageResponse</returns>
+        public ApiResponse< DefaultUsageResponse > GetApiKeyUsageWithHttpInfo (string authorization)
         {
             // verify the required parameter 'authorization' is set
             if (authorization == null)
-                throw new ApiException(400, "Missing required parameter 'authorization' when calling SchedulerApi->GetActiveCurrencies");
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling APIKeyApi->GetApiKeyUsage");
 
-            var localVarPath = "/v3/currencies/get";
+            var localVarPath = "/v3/api_key/usage";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -206,7 +206,7 @@ namespace OriginStamp.Client.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
+                "*/*"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -229,41 +229,41 @@ namespace OriginStamp.Client.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("GetActiveCurrencies", localVarResponse);
+                Exception exception = ExceptionFactory("GetApiKeyUsage", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<DefaultOfListOfCurrencyModel>(localVarStatusCode,
+            return new ApiResponse<DefaultUsageResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (DefaultOfListOfCurrencyModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DefaultOfListOfCurrencyModel)));
+                (DefaultUsageResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DefaultUsageResponse)));
         }
 
         /// <summary>
-        /// Get active currencies Returns an array with all active currencies.
+        /// Usage With this interface you can receive the current usage of your API key. The usage statistic refers to the associated account.
         /// </summary>
         /// <exception cref="OriginStamp.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">A valid API key is essential for authorization to handle the request.</param>
-        /// <returns>Task of DefaultOfListOfCurrencyModel</returns>
-        public async System.Threading.Tasks.Task<DefaultOfListOfCurrencyModel> GetActiveCurrenciesAsync (string authorization)
+        /// <returns>Task of DefaultUsageResponse</returns>
+        public async System.Threading.Tasks.Task<DefaultUsageResponse> GetApiKeyUsageAsync (string authorization)
         {
-             ApiResponse<DefaultOfListOfCurrencyModel> localVarResponse = await GetActiveCurrenciesAsyncWithHttpInfo(authorization);
+             ApiResponse<DefaultUsageResponse> localVarResponse = await GetApiKeyUsageAsyncWithHttpInfo(authorization);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Get active currencies Returns an array with all active currencies.
+        /// Usage With this interface you can receive the current usage of your API key. The usage statistic refers to the associated account.
         /// </summary>
         /// <exception cref="OriginStamp.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">A valid API key is essential for authorization to handle the request.</param>
-        /// <returns>Task of ApiResponse (DefaultOfListOfCurrencyModel)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<DefaultOfListOfCurrencyModel>> GetActiveCurrenciesAsyncWithHttpInfo (string authorization)
+        /// <returns>Task of ApiResponse (DefaultUsageResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<DefaultUsageResponse>> GetApiKeyUsageAsyncWithHttpInfo (string authorization)
         {
             // verify the required parameter 'authorization' is set
             if (authorization == null)
-                throw new ApiException(400, "Missing required parameter 'authorization' when calling SchedulerApi->GetActiveCurrencies");
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling APIKeyApi->GetApiKeyUsage");
 
-            var localVarPath = "/v3/currencies/get";
+            var localVarPath = "/v3/api_key/usage";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -278,7 +278,7 @@ namespace OriginStamp.Client.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
+                "*/*"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -301,13 +301,13 @@ namespace OriginStamp.Client.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("GetActiveCurrencies", localVarResponse);
+                Exception exception = ExceptionFactory("GetApiKeyUsage", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<DefaultOfListOfCurrencyModel>(localVarStatusCode,
+            return new ApiResponse<DefaultUsageResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (DefaultOfListOfCurrencyModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DefaultOfListOfCurrencyModel)));
+                (DefaultUsageResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DefaultUsageResponse)));
         }
 
     }

@@ -1,6 +1,6 @@
-/* 
+/*
  * OriginStamp Client
- * 
+ *
  * OpenAPI spec version: 3.0
  * OriginStamp Documentation: https://docs.originstamp.com
  * Contact: mail@originstamp.com
@@ -24,7 +24,7 @@ using SwaggerDateConverter = OriginStamp.Client.Client.SwaggerDateConverter;
 namespace OriginStamp.Client.Model
 {
     /// <summary>
-    /// request object for proof request.
+    /// Request object for proof request.
     /// </summary>
     [DataContract]
     public partial class ProofRequest :  IEquatable<ProofRequest>, IValidatableObject
@@ -37,44 +37,44 @@ namespace OriginStamp.Client.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ProofRequest" /> class.
         /// </summary>
-        /// <param name="Currency">0: Bitcoin (required).</param>
-        /// <param name="HashString">Hash in HEX representation for which the proof should be created. We allow the use of SHA-256. Note: We handle the hashes in lower-case. (required).</param>
-        /// <param name="ProofType">Specifies which type of file should be returned. Possible value(s):  0: proof with a seed file (txt) or proof with a merkle tree (xml) 1: proof with a PDF file   Other formats will follow. (required).</param>
-        public ProofRequest(int? Currency = default(int?), string HashString = default(string), int? ProofType = default(int?))
+        /// <param name="currency">0: Bitcoin 1: Ethereum 2: AION 100: Südkurier (required).</param>
+        /// <param name="hashString">Hash in HEX representation for which the proof should be created. We allow the use of SHA-256. Note: We handle the hashes in lower-case. (required).</param>
+        /// <param name="proofType">Specifies which type of file should be returned. Possible value(s):  0: proof with a seed file (txt) or proof with a merkle tree (xml) 1: proof with a PDF file   Other formats will follow. (required).</param>
+        public ProofRequest(int? currency = default(int?), string hashString = default(string), int? proofType = default(int?))
         {
-            // to ensure "Currency" is required (not null)
-            if (Currency == null)
+            // to ensure "currency" is required (not null)
+            if (currency == null)
             {
-                throw new InvalidDataException("Currency is a required property for ProofRequest and cannot be null");
+                throw new InvalidDataException("currency is a required property for ProofRequest and cannot be null");
             }
             else
             {
-                this.Currency = Currency;
+                this.Currency = currency;
             }
-            // to ensure "HashString" is required (not null)
-            if (HashString == null)
+            // to ensure "hashString" is required (not null)
+            if (hashString == null)
             {
-                throw new InvalidDataException("HashString is a required property for ProofRequest and cannot be null");
-            }
-            else
-            {
-                this.HashString = HashString;
-            }
-            // to ensure "ProofType" is required (not null)
-            if (ProofType == null)
-            {
-                throw new InvalidDataException("ProofType is a required property for ProofRequest and cannot be null");
+                throw new InvalidDataException("hashString is a required property for ProofRequest and cannot be null");
             }
             else
             {
-                this.ProofType = ProofType;
+                this.HashString = hashString;
+            }
+            // to ensure "proofType" is required (not null)
+            if (proofType == null)
+            {
+                throw new InvalidDataException("proofType is a required property for ProofRequest and cannot be null");
+            }
+            else
+            {
+                this.ProofType = proofType;
             }
         }
         
         /// <summary>
-        /// 0: Bitcoin
+        /// 0: Bitcoin 1: Ethereum 2: AION 100: Südkurier
         /// </summary>
-        /// <value>0: Bitcoin</value>
+        /// <value>0: Bitcoin 1: Ethereum 2: AION 100: Südkurier</value>
         [DataMember(Name="currency", EmitDefaultValue=false)]
         public int? Currency { get; set; }
 
@@ -111,7 +111,7 @@ namespace OriginStamp.Client.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

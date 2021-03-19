@@ -1,6 +1,6 @@
-/* 
+/*
  * OriginStamp Client
- * 
+ *
  * OpenAPI spec version: 3.0
  * OriginStamp Documentation: https://docs.originstamp.com
  * Contact: mail@originstamp.com
@@ -24,26 +24,39 @@ using SwaggerDateConverter = OriginStamp.Client.Client.SwaggerDateConverter;
 namespace OriginStamp.Client.Model
 {
     /// <summary>
-    /// DTO which contains nxt submission time.
+    /// Request object for bulk timestamping request.
     /// </summary>
     [DataContract]
-    public partial class SchedulerResponse :  IEquatable<SchedulerResponse>, IValidatableObject
+    public partial class TimestampBulkRequest :  IEquatable<TimestampBulkRequest>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SchedulerResponse" /> class.
+        /// Initializes a new instance of the <see cref="TimestampBulkRequest" /> class.
         /// </summary>
-        /// <param name="SubmissionTime">Next submission time. The date is returned in the following format: [ms] since 1.1.1970 (unix epoch), timezone: UTC. The timezone is UTC..</param>
-        public SchedulerResponse(long? SubmissionTime = default(long?))
+        [JsonConstructorAttribute]
+        protected TimestampBulkRequest() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TimestampBulkRequest" /> class.
+        /// </summary>
+        /// <param name="timestamps">Array of timestamp request DTOs which will be timestamped. (required).</param>
+        public TimestampBulkRequest(List<TimestampRequest> timestamps = default(List<TimestampRequest>))
         {
-            this.SubmissionTime = SubmissionTime;
+            // to ensure "timestamps" is required (not null)
+            if (timestamps == null)
+            {
+                throw new InvalidDataException("timestamps is a required property for TimestampBulkRequest and cannot be null");
+            }
+            else
+            {
+                this.Timestamps = timestamps;
+            }
         }
         
         /// <summary>
-        /// Next submission time. The date is returned in the following format: [ms] since 1.1.1970 (unix epoch), timezone: UTC. The timezone is UTC.
+        /// Array of timestamp request DTOs which will be timestamped.
         /// </summary>
-        /// <value>Next submission time. The date is returned in the following format: [ms] since 1.1.1970 (unix epoch), timezone: UTC. The timezone is UTC.</value>
-        [DataMember(Name="submission_time", EmitDefaultValue=false)]
-        public long? SubmissionTime { get; set; }
+        /// <value>Array of timestamp request DTOs which will be timestamped.</value>
+        [DataMember(Name="timestamps", EmitDefaultValue=false)]
+        public List<TimestampRequest> Timestamps { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -52,8 +65,8 @@ namespace OriginStamp.Client.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class SchedulerResponse {\n");
-            sb.Append("  SubmissionTime: ").Append(SubmissionTime).Append("\n");
+            sb.Append("class TimestampBulkRequest {\n");
+            sb.Append("  Timestamps: ").Append(Timestamps).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -62,7 +75,7 @@ namespace OriginStamp.Client.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -74,24 +87,24 @@ namespace OriginStamp.Client.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as SchedulerResponse);
+            return this.Equals(input as TimestampBulkRequest);
         }
 
         /// <summary>
-        /// Returns true if SchedulerResponse instances are equal
+        /// Returns true if TimestampBulkRequest instances are equal
         /// </summary>
-        /// <param name="input">Instance of SchedulerResponse to be compared</param>
+        /// <param name="input">Instance of TimestampBulkRequest to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(SchedulerResponse input)
+        public bool Equals(TimestampBulkRequest input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.SubmissionTime == input.SubmissionTime ||
-                    (this.SubmissionTime != null &&
-                    this.SubmissionTime.Equals(input.SubmissionTime))
+                    this.Timestamps == input.Timestamps ||
+                    this.Timestamps != null &&
+                    this.Timestamps.SequenceEqual(input.Timestamps)
                 );
         }
 
@@ -104,8 +117,8 @@ namespace OriginStamp.Client.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.SubmissionTime != null)
-                    hashCode = hashCode * 59 + this.SubmissionTime.GetHashCode();
+                if (this.Timestamps != null)
+                    hashCode = hashCode * 59 + this.Timestamps.GetHashCode();
                 return hashCode;
             }
         }

@@ -1,6 +1,6 @@
-/* 
+/*
  * OriginStamp Client
- * 
+ *
  * OpenAPI spec version: 3.0
  * OriginStamp Documentation: https://docs.originstamp.com
  * Contact: mail@originstamp.com
@@ -36,7 +36,7 @@ namespace OriginStamp.Client.Client
         public T Data { get; private set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ApiResponse&lt;T&gt;" /> class.
+        /// Initializes a new instance of the <see cref="ApiResponse<T>" /> class.
         /// </summary>
         /// <param name="statusCode">HTTP status code.</param>
         /// <param name="headers">HTTP headers.</param>
