@@ -113,7 +113,7 @@ namespace OriginStamp.Client.Client
         /// </summary>
         public Configuration()
         {
-            UserAgent = "Swagger-Codegen/1.0.0/csharp";
+            UserAgent = "OriginStamp Client C#/2.0 (.NET/" + System.Environment.Version + ")";
             BasePath = "https://api.originstamp.com";
             DefaultHeader = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
@@ -186,7 +186,7 @@ namespace OriginStamp.Client.Client
             string tempFolderPath = null,
             string dateTimeFormat = null,
             int timeout = 100000,
-            string userAgent = "Swagger-Codegen/1.0.0/csharp"
+            string userAgent = "OriginStamp Client C#/2.0 (.NET)"
             // ReSharper restore UnusedParameter.Local
             )
         {
